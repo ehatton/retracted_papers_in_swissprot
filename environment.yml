@@ -7,4 +7,5 @@ dependencies:
   - jupyterlab
   - requests
   - defaults::pandas
+  - defaults::numpy
   - papermill
