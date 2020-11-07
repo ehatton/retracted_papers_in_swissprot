@@ -1,0 +1,10 @@
+name: retracted_papers_in_swissprot
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python>=3.7
+  - jupyterlab
+  - requests
+  - defaults::pandas
+  - papermill
