@@ -4,3 +4,5 @@
 logs/
 *.tsv
 *.xslx
+log.ipynb
+
