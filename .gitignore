@@ -5,4 +5,4 @@ logs/
 *.tsv
 *.xslx
 log.ipynb
-
+.DS_Store
