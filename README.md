@@ -10,6 +10,12 @@ Generates an output file in tsv format. The columns names in the file are:
 4. __title:__ the title of the retracted paper
 5. __retraction_notice_pmid:__ PubMed identifier of the related retraction notice, if this exists 
 
+## Quickstart (for Windows/PowerShell users)
+- Ensure that [conda](https://www.anaconda.com/products/individual) is installed.
+- Clone or download this repository.
+- First, run the powershell script [install.ps1](scripts/install.ps1). This creates a conda environment and a logs directory for storing output.
+- Run the powershell script [run.ps1](scripts/run.ps1) to execute the notebook with papermill.
+
 ## Requirements
 
 - python version 3.8 or above (the [Anaconda](https://www.anaconda.com/products/individual) distribution is recommended)
