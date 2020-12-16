@@ -6,3 +6,4 @@ logs/
 *.xslx
 log.ipynb
 .DS_Store
+*.lnk
