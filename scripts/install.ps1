@@ -38,8 +38,30 @@ else {
 # running black once from the command line
 conda activate retracted_papers_in_swissprot
 $tempFile = "./temp.py"
-New-Item -Path $tempFile -ItemType File -Value "x=1"
+New-Item -Path $tempFile -ItemType File -Value "x=1" | Out-Null
 black $tempFile -q
 Remove-Item $tempFile
+
+# Create shortcuts for Windows
+if ($Env:OS -eq "Windows_NT") {
+    Write-Host "Creating shortcuts..."
+
+    $WShell = New-Object -comObject WScript.Shell
+    $pwsh = (Get-Command powershell).Source
+
+    # Create shortcut for installer script
+    $installShortcut = $WShell.CreateShortcut("$workingDir\install.ps1 - Shortcut.lnk")
+    $installShortcut.TargetPath = $pwsh
+    $installShortcut.Arguments = "-ExecutionPolicy Bypass -NoExit .\scripts\install.ps1"
+    $installShortcut.Save()
+
+    # Create shortcut for run script
+    $runShortcut = $WShell.CreateShortcut("$workingDir\run.ps1 - Shortcut.lnk")
+    $runShortcut.TargetPath = $pwsh
+    $runShortcut.Arguments = "-ExecutionPolicy Bypass -NoExit .\scripts\run.ps1"
+    $runShortcut.Save()
+
+    [System.Runtime.Interopservices.Marshal]::ReleaseComObject($WShell) | Out-Null
+}
 
 Write-Host -ForegroundColor Green "Installation complete."
