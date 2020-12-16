@@ -26,12 +26,20 @@ else {
 }
 
 # Create conda environment, unless it already exists
-if (conda info --envs | Select-String "^retracted_papers_in_swissprot ") {
+if (conda info --envs | Select-String "^retracted_papers_in_swissprot") {
     Write-Host "Conda environment 'retracted_papers_in_swissprot' already exists, skipping environment creation."
 }
 else {
     Write-Host "Creating conda environment..."
     conda env create --file "$workingDir/environment.yml"
 }
+
+# The hack below removes black cache errors when executing the notebook, by
+# running black once from the command line
+conda activate retracted_papers_in_swissprot
+$tempFile = "./temp.py"
+New-Item -Path $tempFile -ItemType File -Value "x=1"
+black $tempFile -q
+Remove-Item $tempFile
 
 Write-Host -ForegroundColor Green "Installation complete."
