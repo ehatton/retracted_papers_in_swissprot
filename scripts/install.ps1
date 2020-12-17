@@ -9,6 +9,7 @@ else {
 
 # Set the working directory
 $workingDir = Split-Path $PSScriptRoot -Parent
+Set-Location $workingDir
 
 # Check we are in the right directory
 if ((Split-Path $workingDir -Leaf) -ne "retracted_papers_in_swissprot") {
