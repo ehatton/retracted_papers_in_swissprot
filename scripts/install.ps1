@@ -9,7 +9,6 @@ else {
 
 # Set the working directory
 $workingDir = Split-Path $PSScriptRoot -Parent
-Set-Location $workingDir
 
 # Check we are in the right directory
 if ((Split-Path $workingDir -Leaf) -ne "retracted_papers_in_swissprot") {
@@ -38,7 +37,7 @@ else {
 # The hack below removes black cache errors when executing the notebook, by
 # running black once from the command line
 conda activate retracted_papers_in_swissprot
-$tempFile = "./temp.py"
+$tempFile = "$workingDir\temp.py"
 New-Item -Path $tempFile -ItemType File -Value "x=1" | Out-Null
 black $tempFile -q
 Remove-Item $tempFile
