@@ -45,4 +45,5 @@ else {
 }
 
 # Generate html log
+Write-Host "Converting log notebook to html format..."
 jupyter nbconvert --to html $logFile
